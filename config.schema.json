@@ -1,0 +1,125 @@
+{
+  "pluginAlias": "HomebridgeAndroidTV",
+  "pluginType": "platform",
+  "singular": true,
+  "headerDisplay": "Homebridge AndroidTV plugin",
+  "footerDisplay": "Please, go to http://localhost:8182 (change host to your) to see and add detected devices",
+  "schema": {
+    "port": {
+      "title": "port",
+      "type": "integer",
+      "default": "8182",
+      "required": true
+    },
+    "channels": {
+      "type": "array",
+      "items": {
+        "title": "Channels",
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string",
+            "default": "France Info",
+            "placeholder": "Channel name",
+            "required": true
+          },
+          "number": {
+            "title": "Number",
+            "type": "integer",
+            "default" : 27,
+            "placeholder": "Channel number",
+            "required": true
+          }
+        }
+      }
+    },
+    "keys": {
+      "type": "array",
+      "items": {
+        "title": "Keys",
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string",
+            "default": "Power",
+            "placeholder": "Key name",
+            "required": true
+          },
+          "key": {
+            "title": "Key code",
+            "type": "string",
+            "default" : "KEYCODE_POWER",
+            "placeholder": "Key code",
+            "required": true
+          }
+        }
+      }
+    },
+    "applications": {
+      "type": "array",
+      "items": {
+        "title": "Applications",
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string",
+            "default": "Netflix",
+            "placeholder": "Application name",
+            "required": true
+          },
+          "link": {
+            "title": "Link",
+            "type": "string",
+            "default" : "https://www.netflix.com/title.*",
+            "placeholder": "App link",
+            "required": true
+          }
+        }
+      }
+    }
+  },
+  "layout": [
+    {
+      "key" : "port",
+      "type" : "fieldset",
+      "title" : "Administration port",
+      "items" : {
+        "title" : "Port",
+        "key": "port"
+      }
+    },
+    {
+      "key": "channels",
+      "type": "array",
+      "orderable": true,
+      "buttonText": "Add Channel",
+      "items": [
+        "channels[].name",
+        "channels[].number"
+      ]
+    },
+    {
+      "key": "keys",
+      "type": "array",
+      "orderable": true,
+      "buttonText": "Add Key",
+      "items": [
+        "keys[].name",
+        "keys[].key"
+      ]
+    },
+    {
+      "key": "applications",
+      "type": "array",
+      "orderable": true,
+      "buttonText": "Add Application",
+      "items": [
+        "applications[].name",
+        "applications[].link"
+      ]
+    }
+  ]
+}
